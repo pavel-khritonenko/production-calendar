@@ -111,7 +111,6 @@ const drawMonth = (year: number, month: Month, region: number) => {
     const daysToSkip = (firstDayOfMonth.getUTCDay() == 0 ? 7 : firstDayOfMonth.getUTCDay()) - 1
     let currentDate = new Date(firstDayOfMonth)
     currentDate.setDate(currentDate.getUTCDate() - daysToSkip)
-    console.log(currentDate)
 
     for (let week = 0; week <= 5; week++) {
         let str = "";
