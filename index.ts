@@ -101,16 +101,17 @@ export const isDayOff = (date: Date, region: number) => {
 }
 
 const drawMonth = (year: number, month: Month, region: number) => {
-    console.log(`${Month[month]} ${year} in region ${region}`)
+    console.log(`${Month[month]} ${year} in region [${region}]`)
     const Dim = "\x1b[2m"
     const FgRed = "\x1b[31m"
     const FgGreen = "\x1b[32m"
     const Reset = "\x1b[0m"
 
     const firstDayOfMonth = new Date(Date.UTC(year, month, 1))
-    const daysToSkip = firstDayOfMonth.getUTCDay() - 1
+    const daysToSkip = (firstDayOfMonth.getUTCDay() == 0 ? 7 : firstDayOfMonth.getUTCDay()) - 1
     let currentDate = new Date(firstDayOfMonth)
-    currentDate.setDate(currentDate.getDate() - daysToSkip)
+    currentDate.setDate(currentDate.getUTCDate() - daysToSkip)
+    console.log(currentDate)
 
     for (let week = 0; week <= 5; week++) {
         let str = "";
