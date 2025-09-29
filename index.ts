@@ -53,25 +53,64 @@ const dayoffs2025Tatarstan: YearExceptions = new Map<Month, number[]>([
 
 const extraDays2025Tatarstan: YearExceptions = new Map<Month, number[]>()
 
+const tatarstan2025Calendar: Calendar = {
+    dayoffs: combineExceptions(dayoffs2025, dayoffs2025Tatarstan),
+    extraDays: combineExceptions(extraDays2025, extraDays2025Tatarstan)
+}
+
 const mainCalendar2025: Calendar = {
     dayoffs: dayoffs2025,
     extraDays: extraDays2025
 }
 
-const tatarstanCalendar: Calendar = {
-    dayoffs: combineExceptions(dayoffs2025, dayoffs2025Tatarstan),
-    extraDays: combineExceptions(extraDays2025, extraDays2025Tatarstan)
-}
 
 export const calendars2025: YearWithGeo = {
     mainCalendar: mainCalendar2025,
     regional: new Map<number, Calendar>([
-        [16, tatarstanCalendar]
+        [16, tatarstan2025Calendar]
+    ])
+}
+
+const dayoffs2026: YearExceptions = new Map<Month, number[]>([
+    [Month.January, [1, 2, 5, 6, 7, 8, 9]],
+    [Month.February, [23]],
+    [Month.March, [9]],
+    [Month.May, [1, 11]],
+    [Month.June, [12]],
+    [Month.November, [4]],
+    [Month.December, [31]],
+])
+
+const extraDays2026: YearExceptions = new Map<Month, number[]>()
+
+const dayoffs2026Tatarstan = new Map<Month, number[]>([
+    [Month.March, [20]],
+    [Month.May, [27]],
+    [Month.November, [6]],
+])
+
+const mainCalendar2026: Calendar = {
+    dayoffs: dayoffs2026,
+    extraDays: extraDays2026
+}
+
+const extraDays2026Tatarstan: YearExceptions = new Map<Month, number[]>()
+
+const tatarstan2026Calendar: Calendar = {
+    dayoffs: combineExceptions(dayoffs2026, dayoffs2026Tatarstan),
+    extraDays: combineExceptions(extraDays2026, extraDays2026Tatarstan)
+}
+
+const calendar2026: YearWithGeo = {
+    mainCalendar: mainCalendar2026,
+    regional: new Map<number, Calendar>([
+        [16, tatarstan2026Calendar]
     ])
 }
 
 const years = new Map<number, YearWithGeo>([
-    [2025, calendars2025]
+    [2025, calendars2025],
+    [2026, calendar2026]
 ])
 
 const isExceptionContainsDate = (yearExceptions: YearExceptions, date: Date) => {
@@ -132,7 +171,7 @@ const drawMonth = (year: number, month: Month, region: number) => {
     }
 }
 
-const month = Month.December
-drawMonth(2025, month, 78)
+const month = Month.November
+drawMonth(2026, month, 78)
 console.log()
-drawMonth(2025, month, 16)
+drawMonth(2026, month, 16)
