@@ -112,6 +112,7 @@ const drawMonth = (year: number, month: Month, region: number) => {
     let currentDate = new Date(firstDayOfMonth)
     currentDate.setDate(currentDate.getUTCDate() - daysToSkip)
 
+    // todo: decide how many rows to draw
     for (let week = 0; week <= 5; week++) {
         let str = "";
         for (let weekDay = 1; weekDay <= 7; weekDay++) {
@@ -128,11 +129,10 @@ const drawMonth = (year: number, month: Month, region: number) => {
         }
 
         console.log(`${str}${Reset}`)
-        if (currentDate.getMonth() > month || (month == 0 && currentDate.getMonth() != 0)) break;
     }
 }
 
-const month = Month.November
+const month = Month.December
 drawMonth(2025, month, 78)
 console.log()
 drawMonth(2025, month, 16)
