@@ -128,7 +128,7 @@ const drawMonth = (year: number, month: Month, region: number) => {
         }
 
         console.log(`${str}${Reset}`)
-        if (currentDate.getMonth() > month) break;
+        if (currentDate.getMonth() > month || (month == 0 && currentDate.getMonth() != 0)) break;
     }
 }
 

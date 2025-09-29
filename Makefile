@@ -1,7 +1,7 @@
 .PHONY: dist
 dist:
-	rm -r $@
-	tsc
+	@rm -r $@
+	@tsc
 
 run: dist
-	node $<
+	@node $<
